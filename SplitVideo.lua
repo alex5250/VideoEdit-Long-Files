@@ -1,10 +1,7 @@
 require 'mp'
 require 'mp.msg'
 
--- Copy the current time of the video to clipboard.
 
-WINDOWS = 2
-UNIX = 3
 
 runned_times=0
 
