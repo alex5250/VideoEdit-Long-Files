@@ -70,6 +70,7 @@ version = "0.1.0"
 dependencies = [
  "native-dialog",
  "nfd",
+ "regex",
  "rust-ini",
  "serde",
  "serde_json",

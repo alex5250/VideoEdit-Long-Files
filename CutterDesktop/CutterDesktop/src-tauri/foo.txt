@@ -1,0 +1,5 @@
+ffmpeg -ss 00:00:07.160 -to 00:00:07.160  -i C0030.MP4 -vcodec copy Саня_бл_ть_.mp4
+ffmpeg -ss 00:00:02.160 -to 00:00:09.160  -i C0030.MP4 -vcodec copy Саня_бл_ть_.mp4
+ffmpeg -ss error -to error  -i C0030.MP4 -vcodec copy error.mp4
+ffmpeg -ss 00:00:07.160 -to 00:00:07.160  -i C0031.MP4 -vcodec copy Саня_бл_ть_.mp4
+ffmpeg -ss 00:00:07.160 -to 00:00:07.160  -i C0032.MP4 -vcodec copy Саня_бл_ть_.mp4
