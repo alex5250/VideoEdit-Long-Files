@@ -25,7 +25,7 @@ fn write_script(ffmpeg:String) -> io::Result<()> {
 }
 
 #[tauri::command]
-fn render(input: Vec<CuttedClip>) {
+fn render(input: Vec<CuttedClip>) -> String {
     
 
 
@@ -43,12 +43,13 @@ fn render(input: Vec<CuttedClip>) {
 
         
     }
-    write_script(output);
+    write_script(output.clone());
+    return output;
     }
 
 #[tauri::command]
 fn select_file_dialog() -> Vec<CuttedClip> {
-    let path = r"C:\Users\WindowsSucks\Desktop\config.dat";
+    let path = get_file();
     if path == "error" {
         let yes = MessageDialog::new()
             .set_type(MessageType::Error)
