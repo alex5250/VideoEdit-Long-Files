@@ -14,3 +14,10 @@ Installation:
 Demonstration:
 
 ![Peek 2022-05-06 15-38](https://user-images.githubusercontent.com/20460747/167615770-74f706aa-6dc6-4429-a549-fcdeb03fe403.gif)
+
+# One command install (console part only) 
+**READ ANY BASH FILES YOU RUN**
+So clone it using curl and run it:
+```bash
+curl https://raw.githubusercontent.com/alex5250/VideoEdit-Long-Files/main/installer/install.sh | bash 
+```
