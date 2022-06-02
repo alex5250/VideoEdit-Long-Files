@@ -21,3 +21,8 @@ So clone it using curl and run it:
 ```bash
 curl https://raw.githubusercontent.com/alex5250/VideoEdit-Long-Files/main/installer/install.sh | bash 
 ```
+Demonstration:
+
+
+https://user-images.githubusercontent.com/20460747/171739857-43394b8e-53a3-4fa3-bc89-93bc36063656.mp4
+
