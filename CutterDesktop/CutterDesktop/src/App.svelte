@@ -1,174 +1,134 @@
 <script>
   import { invoke } from "@tauri-apps/api/tauri";
-  import SvelteTable from "svelte-table";
-  import { copy } from 'svelte-copy';
+  import { Tabs, Tab, TabList, TabPanel } from 'svelte-tabs';
+  import Table from './Table.svelte';
+  import Compile from './Compile.svelte';
+  import Select_dir from './Select_Dir.svelte';
+	import {onMount} from 'svelte';
+  import { appWindow } from '@tauri-apps/api/window'
 
-  let final_html;
-  let render_object;
-  let out_script;
+  let table_on=false;
+  let compile_on=false;
+  let select_dir_on=false;
 
-  function save_out_script(data){
-  out_script=data;
+  function table_on_function(){
+    table_on=!table_on;
+    compile_on=false;
+    select_dir_on=false;
   }
-  function select_file() {
-    invoke("select_file_dialog").then((message) => save_in_store(message));
+  function compile_on_function(){
+    compile_on=!compile_on;
+    select_dir_on=false;
+    table_on=false;
   }
-  function save_in_store(data) {
-    render_object=data;
-    recive_data(data);
+  function select_dir_function(){
+    select_dir_on=!select_dir_on;
+     table_on=false;
+     compile_on=false;
   }
-  function recive_data(data) {
-    let out_html = `<table>
-  <tr>
-  <thead>
-    <th>Comment</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th>Filename</th>
-    </thead>
-  </tr> \n
 
 
-  <style>
 
-   table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
- thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
- th,td {
-    padding: 12px 15px;
-}
- tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
- tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-</style>
-`;
-    for (var a = 0; a < data.length; a++) {
-      out_html = out_html + "<tr>\n";
-      out_html = out_html + "<td>" + data[a]["comment"]+ "</td>\n";
-      out_html = out_html + "<td>" + data[a]["start_time"] + "</td>\n";
-      out_html = out_html + "<td>" + data[a]["end_time"] + "</td>\n";
-      out_html = out_html + "<td>" + data[a]["file_belong"] + "</td>\n";
-      out_html = out_html + "</tr>\n";
-    }
-    out_html = out_html + "<table>";
-    final_html=out_html;
-    return out_html;
-  }
-   
-   function bind_inputs() {
-
-   }
-
-   function render() {
-    invoke('render', { input: render_object }).then((message) => save_out_script(message));
-   }
-  
+  onMount(() => {
+    document
+  .getElementById('titlebar-minimize')
+  .addEventListener('click', () => appWindow.minimize())
+document
+  .getElementById('titlebar-maximize')
+  .addEventListener('click', () => appWindow.toggleMaximize())
+document
+  .getElementById('titlebar-close')
+  .addEventListener('click', () => appWindow.close())
+	});
 </script>
 
-<main>
 
-<div class="buttons">
 
-  <button on:click={select_file} > Select file </button>
-<button on:click={render}> Render  </button>
-</div>
-
- <div class="table">
-    {@html final_html}
+  <div data-tauri-drag-region class="titlebar">
+    <div class="buttons"  >
+    <button  class="control_buttons" on:click={table_on_function} > Splitted Table </button>
+    <button  class="control_buttons" on:click={compile_on_function} > Results</button>
+    <button   class="control_buttons" on:click={select_dir_function} > Select Area</button>
   </div>
+    <div class="titlebar-button" id="titlebar-minimize">
+      <img
+        src="https://api.iconify.design/mdi:window-minimize.svg"
+        alt="minimize"
+      />
+    </div>
+    <div class="titlebar-button" id="titlebar-maximize">
+      <img
+        src="https://api.iconify.design/mdi:window-maximize.svg"
+        alt="maximize"
+      />
+    </div>
+    <div class="titlebar-button" id="titlebar-close">
+      <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
+    </div>
 
+ 
+  
+  </div>
+  <main>
+<div class="main">
+  {#if table_on}
+	
+<Table></Table>
+  {/if}
 
- <textarea value={out_script} ></textarea>
+  {#if compile_on}
+	
+  <Compile></Compile>
+    {/if}
 
+    {#if select_dir_on}
+	
+    <Select_dir></Select_dir>
+      {/if}
+</div>
+  
 </main>
 
+
 <style>
-.table {
-    margin-left: auto;
-  margin-right: auto;
-}
-textarea {
-    width: 640px;
-  height: 400px;
-}
-
-  .lower {
-  position:absolute;
-  bottom:100px;
+  .buttons {
+    position: relative;
+    right:25%;
   }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  .main {
+    margin-top: 50px;
   }
-
-
-
-.buttons {
-    display: flex;
-  justify-content: space-between;
-}
-/* CSS */
-button {
-  align-items: center;
-  appearance: button;
-  background-color: #0276FF;
-  border-radius: 8px;
-  border-style: none;
-  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
-  font-family: "RM Neue",sans-serif;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-  padding: 10px 21px;
-  text-align: center;
-  text-transform: none;
-  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  .control_buttons {
+    color:white;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-color: white;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    background: transparent;
+    border-style: none none solid none;
+  }
+.titlebar {
+  height: 30px;
+  background: #329ea3;
   user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
-
-button:active {
-  background-color: #006AE8;
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
 }
-
-button:hover {
-  background-color: #1C84FF;
+.titlebar-button:hover {
+  background: #5bbec3;
 }
-
-
 </style>
-
