@@ -26,3 +26,5 @@ Demonstration:
 
 https://user-images.githubusercontent.com/20460747/171739857-43394b8e-53a3-4fa3-bc89-93bc36063656.mp4
 
+# New UI:
+![image](https://user-images.githubusercontent.com/20460747/174448356-daf76864-e92f-4c11-990e-4f64714f40c7.png)
