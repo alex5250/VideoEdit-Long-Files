@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+.select_button {
+    background-color: #2753FF;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    border-color: transparent;
+    color:white;
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 16px;
+ 
+
+}
+.select_button:active {
+    
+    background-color: #27538F;
+    transform: scale(1.02);
+   
+}
+
+.select_button:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+.welcome {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+p {
+    color: grey;
+}
+
+

@@ -1,13 +1,13 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "yarn build",
-    "beforeDevCommand": "yarn dev",
-    "devPath": "http://localhost:8080",
-    "distDir": "../public"
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run dev",
+    "devPath": "http://localhost:3000",
+    "distDir": "../dist"
   },
   "package": {
-    "productName": "cutterdesktop",
+    "productName": "CutterDesktopV1",
     "version": "0.1.0"
   },
   "tauri": {
@@ -58,10 +58,8 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "CutterDesktop",
-        "width": 800,
-        "decorations":false
-
+        "title": "CutterDesktopV1",
+        "width": 800
       }
     ]
   }
