@@ -1,3 +1,7 @@
+/* todo 
+replace println!() with logger in app
+*/
+
 extern crate nfd;
 
 use nfd::Response;
@@ -35,6 +39,6 @@ pub fn mpv_list_perpare(input_path: String) {
     for path in paths {
         let input_path_as_argument=path.unwrap().path().display().to_string();
         let output=run_command(input_path_as_argument,"".to_string());
-        println!("{:#?}",std::str::from_utf8(output));
+        println!("{:#?}",std::str::from_utf8(&output));
     }
 }
