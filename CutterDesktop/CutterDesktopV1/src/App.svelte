@@ -10,9 +10,18 @@
   let clips_data;
   let render_script="";
   let theme="Dark";
+  let theme_bool=false;
 
   function theme_button() {
+    if (theme_bool) {
+      theme="Light";
+    }
+    else {
+      theme="Dark";
+    }
 
+    theme_bool=!theme_bool;
+    
   }
   function define_render_script(data) {
     render_script=data;
