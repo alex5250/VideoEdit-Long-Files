@@ -22,12 +22,42 @@
    
 }
 
+
 .select_button:hover {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
     perspective: 1000px;
 }
 
+
+.select_button {
+  background-color: #2753FF;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  border-color: transparent;
+  color:white;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 16px;
+
+
+}
+.select_button:active {
+  
+  background-color: #27538F;
+  transform: scale(1.02);
+ 
+}
+
+
+.select_button:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
 @keyframes shake {
     10%, 90% {
       transform: translate3d(-1px, 0, 0);
@@ -83,4 +113,9 @@ tbody tr:last-of-type {
 tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+textarea {
+  width: 760px;
+height: 411px;
 }

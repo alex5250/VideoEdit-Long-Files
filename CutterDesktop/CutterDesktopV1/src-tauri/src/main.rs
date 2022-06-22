@@ -26,6 +26,7 @@ fn main() {
 }
 */
 
+
 mod dir_select_dialog;
 mod parse;
 mod regrex_check;
@@ -37,6 +38,8 @@ use parse::CuttedClip;
 use std::env;
 use crate::regrex_check::get_file_name;
 use std::path::Path;
+use nfd::Response;
+use std::fs;
 
 #[tauri::command]
 fn directory_select() {
@@ -85,9 +88,27 @@ fn render(input: Vec<CuttedClip>) -> String {
     return output;
     }
 
+    #[tauri::command]
+    fn save(input: String)  {
+        let result = nfd::open_save_dialog(None, None).unwrap_or_else(|e| {
+            panic!("{}",e);
+        });
+
+        let result_path=match result {
+            Response::Okay(file_path) => file_path,
+            Response::Cancel => "error".to_string(),
+            Response::OkayMultiple(_) => "error".to_string(),
+
+        };
+
+        fs::write(result_path, input).expect("Unable to write file");
+
+
+    }
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![directory_select,table_render,render])
+        .invoke_handler(tauri::generate_handler![directory_select,table_render,render,save])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

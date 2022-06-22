@@ -4,10 +4,8 @@
   import { invoke } from '@tauri-apps/api/tauri'
   import styles from './assets/styles.css'
 
-  let select_dir_visibility=true;
-  let table_dir_visibility=false;
-  let table_dir_visibility_button=false;
-  let render_area_visibility=false;
+
+  import { Tabs, Tab, TabList, TabPanel } from 'svelte-tabs';
   let clips_data;
   let render_script="";
 
@@ -15,23 +13,23 @@
     render_script=data;
   }
   function select_dir() {
-    select_dir_visibility=false;
+
     invoke('directory_select');
-    table_dir_visibility=true;
-    table_dir_visibility_button=true;
   }
 
+  function save() {
+
+invoke('save', { input: render_script })
+}
 
   function render() {
-    render_area_visibility=true;
-    table_dir_visibility=false;
-    table_dir_visibility_button=false;
+ 
     invoke('render', { input: clips_data }).then((message) => define_render_script(message))
 
   }
   function parse_file() {
      invoke('table_render').then((message) => recive_data(message))
-     table_dir_visibility_button=false;
+   
 
   }
 
@@ -68,34 +66,52 @@
 </script>
 
 <main>
-  {#if select_dir_visibility}
-
-  <div class="welcome" transition:fly="{{ y: 100, duration: 2000 }}">
-     <button class="select_button" on:click={select_dir}>Select Dir</button>
-     <p> Select and directory where is your media files placed.</p>
-  </div>
-  
-  {/if}
 
 
-  <div class="table" transition:fly="{{ y: 100, duration: 2000 }}" on:load="{parse_file}">
-  
-    <button class="select_button" on:click={parse_file}>Process an Table</button>
- 
+<Tabs>
+  <TabList>
+    <Tab>Select dir</Tab>
+    <Tab>Process into table</Tab>
+    <Tab>Render</Tab>
+  </TabList>
 
-    <div class="table" on:click={render}>
-      {@html final_html}
-    </div>
+  <TabPanel>
+    <div class="welcome" transition:fly="{{ y: 100, duration: 2000 }}">
+      <button class="select_button" on:click={select_dir}>Select Dir</button>
+      <p> Select and directory where is your media files placed.</p>
+   </div>
+  </TabPanel>
 
-   
-    {#if render_area_visibility}
-    
+  <TabPanel>
+    <div class="table" transition:fly="{{ y: 100, duration: 2000 }}" on:load="{parse_file}">
+      <button class="select_button" on:click={parse_file}>Process an Table</button>
+      <div class="table" on:click={render}>
+        {@html final_html}
+      </div>
+  </TabPanel>
+
+  <TabPanel on:click={render}>
+
+
     <div class="render">
-     <textarea bind:value={render_script}></textarea>
-    </div>
-  {/if}
+      <textarea bind:value={render_script} ></textarea>
+     </div> 
+    
+     <button class="select_button" on:click={save}>Save</button>
+    </TabPanel>
+</Tabs>
+
+
+
   
-  </div>
+  
+    
+  
+    
+   
+
+  
+
 
 </main>
 
