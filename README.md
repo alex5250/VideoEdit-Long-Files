@@ -28,3 +28,13 @@ https://user-images.githubusercontent.com/20460747/171739857-43394b8e-53a3-4fa3-
 
 # New UI:
 ![image](https://user-images.githubusercontent.com/20460747/174448356-daf76864-e92f-4c11-990e-4f64714f40c7.png)
+
+# Pure magic UI , on last release:
+![1](https://user-images.githubusercontent.com/20460747/175174928-2f8b0540-bd6b-4157-bddf-e6c05fe55acf.png)
+![2](https://user-images.githubusercontent.com/20460747/175174938-1c2ace37-f00d-4bbd-920a-73a191d42e68.png)
+![3](https://user-images.githubusercontent.com/20460747/175174943-882d1f01-2b48-4f4b-bd5e-98f88be5fff0.png)
+
+
+https://user-images.githubusercontent.com/20460747/175175113-227abbd0-3658-4f18-9613-b7de02ef6841.mp4
+
+
