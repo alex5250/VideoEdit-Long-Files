@@ -18,7 +18,7 @@ local function write_to_file(time,way)
 		file = io.open("config.dat", "a")
 	    file:write(string.format("%s_%s=%s \n",runned_times,way, time))
 	    file:close()
-        
+
 	-- body
 end
 
@@ -29,7 +29,8 @@ local function comment_append(comment)
 -- body
 end
 local function make_out_file_begin(time,way)
-	if runned_times == 0
+
+    if runned_times == 0
 		then
 			mp.osd_message(string.format("new .dat file  %s", video_path))
 			local video_path = mp.get_property("path")
@@ -38,11 +39,13 @@ local function make_out_file_begin(time,way)
 		    file:close()
 
 		    write_to_file(time,way)
+
 	else
-    	
+
 		write_to_file(time,way)
+
     end
-    runned_times=runned_times+1
+
 	-- body
 end
 
@@ -61,10 +64,10 @@ local function get_time()
     mp.osd_message(string.format("Start sample %s", time))
     make_out_file_begin(time,"begin")
 
-   
+
 end
 
-local function comment_add() 
+local function comment_add()
     local handle = io.popen("cutter_desktop_comment_input")
     local result = handle:read("*a")
     handle:close()
@@ -81,8 +84,8 @@ local function finish_time()
     local milliseconds = math.floor((remainder - seconds) * 1000)
     local time = string.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds)
     mp.osd_message(string.format("Ended sample %s", time))
-
     make_out_file_end(time,"end")
+    runned_times=runned_times+1
 end
 
 
