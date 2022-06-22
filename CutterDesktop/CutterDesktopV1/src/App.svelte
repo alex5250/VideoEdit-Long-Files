@@ -3,12 +3,17 @@
   import { fade, fly } from 'svelte/transition';
   import { invoke } from '@tauri-apps/api/tauri'
   import styles from './assets/styles.css'
-
+  import { appWindow } from '@tauri-apps/api/window'
+  import { onMount } from 'svelte';
 
   import { Tabs, Tab, TabList, TabPanel } from 'svelte-tabs';
   let clips_data;
   let render_script="";
+  let theme="Dark";
 
+  function theme_button() {
+
+  }
   function define_render_script(data) {
     render_script=data;
   }
@@ -63,8 +68,42 @@ invoke('save', { input: render_script })
     final_html=out_html;
     return out_html;
   }
-</script>
 
+
+  onMount(async () => {
+    document
+  .getElementById('titlebar-minimize')
+  .addEventListener('click', () => appWindow.minimize())
+document
+  .getElementById('titlebar-maximize')
+  .addEventListener('click', () => appWindow.toggleMaximize())
+document
+  .getElementById('titlebar-close')
+  .addEventListener('click', () => appWindow.close())
+	});
+</script>
+<nav id="sidebar" class="visible">
+<div data-tauri-drag-region class="titlebar">
+  <div class="titlebar-button" id="titlebar-minimize">
+    <img
+      src="https://api.iconify.design/mdi:window-minimize.svg"
+      alt="minimize"
+    />
+  </div>
+  <div class="titlebar-button" id="titlebar-maximize">
+    <img
+      src="https://api.iconify.design/mdi:window-maximize.svg"
+      alt="maximize"
+    />
+  </div>
+  <div class="titlebar-button" id="titlebar-close">
+    <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
+  </div>
+
+
+  <button on:click={theme_button} class="theme_button"> {theme}</button>
+</div>
+</nav>
 <main>
 
 
@@ -117,6 +156,8 @@ invoke('save', { input: render_script })
 
 <style>
   :root {
+    border-radius: 20px;
+    border-color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
@@ -125,12 +166,11 @@ invoke('save', { input: render_script })
     text-align: center;
     padding: 1em;
     margin: 0 auto;
+    border-radius: 20px;
+    border-color: white;
   }
 
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
+
 
   h1 {
     color: #ff3e00;
@@ -157,4 +197,6 @@ invoke('save', { input: render_script })
       max-width: none;
     }
   }
+
+  
 </style>

@@ -63,31 +63,21 @@ fn table_render() -> Vec<CuttedClip>  {
     return parse_file(final_path.to_string());
 }
 }
-
-
 #[tauri::command]
 fn render(input: Vec<CuttedClip>) -> String {
-    
-
-
     let mut output=String::new();
-
-   
     for a in input {
         let filename = get_file_name(a.comment.clone(), "mp4".to_string());
         let ffmpeg = format!(
             "ffmpeg -ss {} -to {}  -i {} -vcodec copy {}\n",
             a.end_time, a.start_time, a.file_belong, filename
-        );
-      
+        );    
         output.push_str(&ffmpeg);
 
         
     }
-    //write_script(output.clone());
     return output;
     }
-
     #[tauri::command]
     fn save(input: String)  {
         let result = nfd::open_save_dialog(None, None).unwrap_or_else(|e| {
@@ -100,10 +90,7 @@ fn render(input: Vec<CuttedClip>) -> String {
             Response::OkayMultiple(_) => "error".to_string(),
 
         };
-
         fs::write(result_path, input).expect("Unable to write file");
-
-
     }
 
 fn main() {
