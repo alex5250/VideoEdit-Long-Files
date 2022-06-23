@@ -9,20 +9,13 @@
   import { Tabs, Tab, TabList, TabPanel } from 'svelte-tabs';
   let clips_data;
   let render_script="";
-  let theme="Dark";
-  let theme_bool=false;
+ 
+  function NewTab() {
+    alert("Read more:https://github.com/alex5250/VideoEdit-Long-Files");
+           
+   }
 
-  function theme_button() {
-    if (theme_bool) {
-      theme="Light";
-    }
-    else {
-      theme="Dark";
-    }
-
-    theme_bool=!theme_bool;
-    
-  }
+  
   function define_render_script(data) {
     render_script=data;
   }
@@ -109,14 +102,16 @@ document
     <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
   </div>
 
+  <button class="theme_button" on:click={NewTab}>About </button>
 
-  <button on:click={theme_button} class="theme_button"> {theme}</button>
+ 
 </div>
 </nav>
-<main>
+<main >
+  <div   class="main_panel">
 
 
-<Tabs>
+<Tabs >
   <TabList>
     <Tab>Select dir</Tab>
     <Tab>Process into table</Tab>
@@ -148,6 +143,7 @@ document
      <button class="select_button" on:click={save}>Save</button>
     </TabPanel>
 </Tabs>
+</div>
 
 
 

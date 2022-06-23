@@ -148,4 +148,13 @@ height: 411px;
 .theme_button {
   background-color: transparent;
   border-color: transparent;
+  position: absolute;
+  left:10px;
 }
+
+.main_panel {
+  filter: invert(var(--theme-color));
+  
+  
+}
+
