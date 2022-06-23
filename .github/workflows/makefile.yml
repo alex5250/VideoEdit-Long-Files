@@ -13,15 +13,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
     
     - name: configure
       run: ./configure
       
-    - name: Install dependencies
-      run: make
+    - name: Build comment entry
+      run: make build_comment_request
       
-    - name: Run check
-      run: make check
+    - name: Build app
+      run: make build_desktop
       
-    - name: Run distcheck
-      run: make distcheck
+    - uses: actions/upload-artifact@v2
+      with:
+            name: desktop build binary. 
+            path: /home/runner/work/grepper_py/grepper_py/dist/main
