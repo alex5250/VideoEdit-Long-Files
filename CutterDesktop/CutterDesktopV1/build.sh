@@ -11,6 +11,5 @@ cd ./CutterDesktop/CutterDesktopV1
 npm install
 npm run tauri build
 cd ..
-cp -r  ./CutterDesktop/CutterDesktopV1/src-tauri/target/release/bundle
- ./bin
+cp -r  ./src-tauri/target/release/bundle ./bin
 
