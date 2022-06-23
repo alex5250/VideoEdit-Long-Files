@@ -15,8 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     
-    - name: configure
-      run: ./configure
+
       
     - name: Build comment entry
       run: make build_comment_request
