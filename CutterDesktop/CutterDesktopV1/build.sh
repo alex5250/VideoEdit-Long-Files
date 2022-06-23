@@ -10,3 +10,7 @@ sudo apt install libwebkit2gtk-4.0-dev \
 cd ./CutterDesktop/CutterDesktopV1
 npm install
 npm run tauri build
+cd ..
+cp -r  ./CutterDesktop/CutterDesktopV1/src-tauri/target/release/bundle
+ ./bin
+

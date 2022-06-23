@@ -16,7 +16,7 @@
     },
     "bundle": {
       "active": true,
-      "category": "Video app",
+      "category": "Video",
       "copyright": "",
       "deb": {
         "depends": []
