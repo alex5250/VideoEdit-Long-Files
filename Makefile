@@ -8,4 +8,9 @@ clean:
 	rm -rf ./comment_request/target
 	rm -rf ./CutterDesktop/CutterDesktopV1/node_modules
 	rm -rf ./CutterDesktop/CutterDesktopV1/src-tauri/target
+	rm -rf bin
 
+build_desktop:
+	./CutterDesktop/CutterDesktopV1/build.sh
+
+	
