@@ -38,3 +38,7 @@ https://user-images.githubusercontent.com/20460747/171739857-43394b8e-53a3-4fa3-
 https://user-images.githubusercontent.com/20460747/175175113-227abbd0-3658-4f18-9613-b7de02ef6841.mp4
 
 
+
+Todo:
+-[ ] Make work on windows
+-[ ] Allow users to skip editting part if config file is in dir
