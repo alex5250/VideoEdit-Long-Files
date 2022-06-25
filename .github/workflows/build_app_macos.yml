@@ -1,0 +1,29 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+    
+
+      
+    - name: Build comment entry
+      run: make build_comment_request
+      
+    - name: Build app
+      run: make build_desktop
+      
+    - uses: actions/upload-artifact@v2
+      with:
+            name: desktop build binary. 
+            path: /home/runner/work/grepper_py/grepper_py/dist/main
