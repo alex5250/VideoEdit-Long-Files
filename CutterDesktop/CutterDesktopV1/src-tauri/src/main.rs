@@ -70,7 +70,7 @@ fn render(input: Vec<CuttedClip>) -> String {
         let filename = get_file_name(a.comment.clone(), "mp4".to_string());
         let ffmpeg = format!(
             "ffmpeg -ss {} -to {}  -i {} -vcodec copy {}\n",
-            a.end_time, a.start_time, a.file_belong, filename
+            a.start_time, a.end_time, a.file_belong, filename
         );    
         output.push_str(&ffmpeg);
 
