@@ -30,6 +30,6 @@ curl https://raw.githubusercontent.com/alex5250/VideoEdit-Long-Files/main/instal
 Go [here](https://github.com/alex5250/VideoEdit-Long-Files/releases/tag/v0.01-user-input) and get install in .zip format, unpack it and than install by clicking on .exe file.
 
 
-Todo:  
+# Todo:  
 - [ ] Make work on windows  
 - [ ] Allow users to skip editting part if config file is in dir  
