@@ -30,5 +30,5 @@ Windows users : go [here](https://github.com/alex5250/VideoEdit-Long-Files/relea
 
 
 Todo:  
--[ ] Make work on windows  
--[ ] Allow users to skip editting part if config file is in dir  
+- [ ] Make work on windows  
+- [ ] Allow users to skip editting part if config file is in dir  
