@@ -20,14 +20,16 @@ Installation:
 
 
 # CLI Part install
-# One command install (console part only) (Linux only)
+# One command install (console part only) 
 **READ ANY BASH FILES YOU RUN**
 So clone it using curl and run it:
 ```bash
 curl https://raw.githubusercontent.com/alex5250/VideoEdit-Long-Files/main/installer/install.sh | bash 
 ```
+# Windows users
+Go [here](https://github.com/alex5250/VideoEdit-Long-Files/releases/tag/v0.01-user-input) and get install in .zip format, unpack it and than install by clicking on .exe file.
 
 
-Todo:
--[_] Make work on windows
--[_] Allow users to skip editting part if config file is in dir
+# Todo:  
+- [ ] Make work on windows  
+- [ ] Allow users to skip editting part if config file is in dir  
