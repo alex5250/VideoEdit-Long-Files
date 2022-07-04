@@ -148,15 +148,22 @@ height: 411px;
 .theme_button {
   background-color: transparent;
   border-color: transparent;
+ 
+
+}
+
+.left {
   position: absolute;
   left:10px;
 }
-
-.main_panel {
-  filter: invert(var(--theme-color));
-  
-  
+.right {
+  position: absolute;
+  right:120px;
+  top:3px;
 }
+
+
+
 
 
 :root {

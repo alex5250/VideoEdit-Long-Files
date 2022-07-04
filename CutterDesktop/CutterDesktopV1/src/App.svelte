@@ -5,10 +5,13 @@
   import { appWindow } from '@tauri-apps/api/window'
   import { onMount } from 'svelte';
   import { Tabs, Tab, TabList, TabPanel } from 'svelte-tabs';
-  
+  import Switch from './lib/Switch.svelte';
+
   let clips_data;
   let render_script="";
- 
+  let is_theme_dark;
+  let current_theme="Light";
+
   function NewTab() {
     alert("Read more:https://github.com/alex5250/VideoEdit-Long-Files");
    }
@@ -18,6 +21,17 @@
   }
   function select_dir() {
     invoke('directory_select');
+  }
+
+  function change_theme() {
+    is_theme_dark=!is_theme_dark;
+    if( is_theme_dark==true) {
+      current_theme="Dark"
+      
+    }
+    else {
+      current_theme="Light"
+    }
   }
 
   function save() {
@@ -71,7 +85,9 @@ document
 	});
 </script>
 <nav id="sidebar" class="visible">
+ 
 <div data-tauri-drag-region class="titlebar">
+  
   <div class="titlebar-button" id="titlebar-minimize">
     <img
       src="https://api.iconify.design/mdi:window-minimize.svg"
@@ -83,15 +99,19 @@ document
       src="https://api.iconify.design/mdi:window-maximize.svg"
       alt="maximize"
     />
+
   </div>
   <div class="titlebar-button" id="titlebar-close">
     <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
   </div>
-  <button class="theme_button" on:click={NewTab}>About </button>
+  <button class="theme_button left" on:click={NewTab}>About </button>
+  <button class="theme_button right " on:click={change_theme}>{current_theme} </button>
+
 </div>
 </nav>
 <main >
-  <div   class="main_panel">
+
+  <div   class="main_panel" id="body">
 <Tabs >
   <TabList>
     <Tab>Select dir</Tab>
@@ -118,5 +138,36 @@ document
      <button class="select_button" on:click={save}>Save</button>
     </TabPanel>
 </Tabs>
+
+{#if is_theme_dark}
+	<style>
+		body {
+			background-color: #363732;
+		}
+    .titlebar {
+      background-color: #363732;
+    }
+    
+    p,h1 {
+      color:white;
+    }
+	</style>
+{:else if !is_theme_dark}
+	<style>
+   
+		body {
+   
+			background-color: #f5efff;
+		}
+    .titlebar {
+      background-color: #f5efff;
+    }
+    p,h1 {
+      color:black;
+    }
+
+   
+	</style>
+{/if}
 </div>
 </main>
