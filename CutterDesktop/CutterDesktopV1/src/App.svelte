@@ -62,7 +62,7 @@ invoke('save', { input: render_script })
 `;
     for (var a = 0; a < data.length; a++) {
       out_html = out_html + "<tr>\n";
-      out_html = out_html + "<td><input value=" + data[a]["comment"]+ "></input></td>\n";
+      out_html = out_html + "<td><input class='edit' value=" + data[a]["comment"]+ "></input></td>\n";
       out_html = out_html + "<td>" + data[a]["start_time"] + "</td>\n";
       out_html = out_html + "<td>" + data[a]["end_time"] + "</td>\n";
       out_html = out_html + "<td>" + data[a]["file_belong"] + "</td>\n";
@@ -76,9 +76,7 @@ invoke('save', { input: render_script })
     document
   .getElementById('titlebar-minimize')
   .addEventListener('click', () => appWindow.minimize())
-document
-  .getElementById('titlebar-maximize')
-  .addEventListener('click', () => appWindow.toggleMaximize())
+
 document
   .getElementById('titlebar-close')
   .addEventListener('click', () => appWindow.close())
@@ -94,13 +92,9 @@ document
       alt="minimize"
     />
   </div>
-  <div class="titlebar-button" id="titlebar-maximize">
-    <img
-      src="https://api.iconify.design/mdi:window-maximize.svg"
-      alt="maximize"
-    />
+ 
 
-  </div>
+
   <div class="titlebar-button" id="titlebar-close">
     <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
   </div>
@@ -157,10 +151,10 @@ document
    
 		body {
    
-			background-color: #f5efff;
+			background-color: #e6e6e6;
 		}
     .titlebar {
-      background-color: #f5efff;
+      background-color: #e6e6e6;
     }
     p,h1 {
       color:black;

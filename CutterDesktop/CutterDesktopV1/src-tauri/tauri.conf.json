@@ -57,7 +57,7 @@
       {
         "fullscreen": false,
         "height": 600,
-        "resizable": true,
+        "resizable": false,
         "title": "CutterDesktopV1",
         "width": 800,
         "decorations": false
