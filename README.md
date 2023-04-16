@@ -33,3 +33,7 @@ Go [here](https://github.com/alex5250/VideoEdit-Long-Files/releases/tag/v0.01-us
 # Todo:  
 - [ ] Make work on windows  
 - [ ] Allow users to skip editting part if config file is in dir  
+
+
+
+WIP 
